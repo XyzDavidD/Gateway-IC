@@ -39,6 +39,8 @@ export function HeroSection() {
   const getNavHref = (item: string) => {
     if (item === "Home") return "#home";
     if (item === "About") return "#about";
+    if (item === "Services") return "#services";
+    if (item === "Industries") return "#industries";
     if (item === "Contact") return "#contact";
     return "#";
   };
@@ -108,40 +110,44 @@ export function HeroSection() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="fixed inset-x-1 top-1 z-[90] sm:inset-x-1.5 sm:top-1.5 lg:inset-x-2 lg:top-2"
             >
-              <div className="mx-auto flex w-full max-w-[1880px] items-center gap-3 rounded-[2rem] border border-[#D4DEEA] bg-white px-4 py-3 shadow-[0_8px_24px_rgba(0,26,61,0.12)] sm:px-6 lg:px-8">
-                <div className="relative h-14 w-14 shrink-0 sm:h-16 sm:w-16">
-                  <Image src="/logo-dark.png" alt="Gateway IC logo" fill className="object-contain" sizes="64px" />
-                </div>
+              <div className="mx-auto w-full max-w-[1880px] rounded-[2rem] border border-[#D4DEEA] bg-white px-4 py-3 shadow-[0_8px_24px_rgba(0,26,61,0.12)] sm:px-6 lg:px-8">
+                <div className="relative flex items-center justify-between font-heading">
+                  <div className="relative h-14 w-14 shrink-0 sm:h-16 sm:w-16 md:w-[130px] md:justify-self-start">
+                    <Image src="/logo-dark.png" alt="Gateway IC logo" fill className="object-contain md:object-left" sizes="64px" />
+                  </div>
 
-                <nav className="hidden flex-1 items-center justify-center gap-8 md:flex lg:gap-11">
-                  {navigation.map((item) => (
-                    <a
-                      key={`floating-${item}`}
-                      href={getNavHref(item)}
-                      onClick={(event) => handleNavClick(event, item)}
-                      className="group relative text-[0.96rem] font-medium tracking-[0.02em] text-[#2A3D59] transition-colors duration-300 hover:text-[#001A3D]"
+                  <nav className="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-8 md:flex lg:gap-11">
+                    {navigation.map((item) => (
+                      <a
+                        key={`floating-${item}`}
+                        href={getNavHref(item)}
+                        onClick={(event) => handleNavClick(event, item)}
+                        className="group relative text-[0.96rem] font-medium tracking-[0.02em] text-[#2A3D59] transition-colors duration-300 hover:text-[#001A3D]"
+                      >
+                        <span>{item}</span>
+                        <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-[#001A3D] transition-all duration-300 ease-out group-hover:w-full" />
+                      </a>
+                    ))}
+                  </nav>
+
+                  <div className="hidden w-[130px] justify-end md:flex">
+                    <Button
+                      onClick={handleContactClick}
+                      className="h-10 cursor-pointer rounded-full bg-[#001A3D] px-6 text-[0.93rem] font-medium text-white transition-colors duration-300 hover:bg-[#04244f]"
                     >
-                      <span>{item}</span>
-                      <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-[#001A3D] transition-all duration-300 ease-out group-hover:w-full" />
-                    </a>
-                  ))}
-                </nav>
+                      Contact
+                    </Button>
+                  </div>
 
-                <Button
-                  onClick={handleContactClick}
-                  className="hidden h-10 cursor-pointer rounded-full bg-[#001A3D] px-6 text-[0.93rem] font-medium text-white transition-colors duration-300 hover:bg-[#04244f] md:inline-flex"
-                >
-                  Contact
-                </Button>
-
-                <button
-                  type="button"
-                  aria-label="Open menu"
-                  onClick={() => setFloatingMenuOpen((prev) => !prev)}
-                  className="ml-auto inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#B9C2CF] bg-[#E3E7ED] text-[#20385A] transition-colors duration-300 hover:bg-[#D6DCE6] md:hidden"
-                >
-                  {floatingMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
+                  <button
+                    type="button"
+                    aria-label="Open menu"
+                    onClick={() => setFloatingMenuOpen((prev) => !prev)}
+                    className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#B9C2CF] bg-[#E3E7ED] text-[#20385A] transition-colors duration-300 hover:bg-[#D6DCE6] md:hidden"
+                  >
+                    {floatingMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                  </button>
+                </div>
               </div>
             </motion.div>
 
@@ -231,13 +237,13 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
-            className="grid grid-cols-[auto_1fr_auto] items-center gap-4 font-heading"
+            className="relative flex items-center justify-between font-heading"
           >
-            <div className="relative h-20 w-20 sm:h-20 sm:w-20">
-              <Image src="/logo.png" alt="Gateway IC logo" fill className="object-contain" sizes="80px" />
+            <div className="relative h-20 w-20 sm:h-20 sm:w-20 md:w-[130px]">
+              <Image src="/logo.png" alt="Gateway IC logo" fill className="object-contain md:object-left" sizes="80px" />
             </div>
 
-            <nav className="hidden items-center justify-center gap-8 text-white/95 md:flex lg:gap-11">
+            <nav className="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-8 text-white/95 md:flex lg:gap-11">
               {navigation.map((item) => (
                 <a
                   key={item}
@@ -251,18 +257,20 @@ export function HeroSection() {
               ))}
             </nav>
 
-            <Button
-              onClick={handleContactClick}
-              className="hidden h-11 cursor-pointer justify-self-end rounded-full bg-[#001A3D] px-7 text-[0.98rem] font-medium text-white shadow-[0_10px_24px_rgba(0,26,61,0.36)] transition-colors duration-300 ease-out hover:bg-[#052a61] active:bg-[#001f49] md:inline-flex"
-            >
-              Contact
-            </Button>
+            <div className="hidden w-[130px] justify-end md:flex">
+              <Button
+                onClick={handleContactClick}
+                className="h-11 cursor-pointer rounded-full bg-[#001A3D] px-7 text-[0.98rem] font-medium text-white shadow-[0_10px_24px_rgba(0,26,61,0.36)] transition-colors duration-300 ease-out hover:bg-[#052a61] active:bg-[#001f49]"
+              >
+                Contact
+              </Button>
+            </div>
 
             <button
               type="button"
               aria-label="Open menu"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="inline-flex h-11 w-11 cursor-pointer justify-self-end items-center justify-center rounded-full border border-[#B9C2CF] bg-[#E3E7ED] text-[#20385A] transition-colors duration-300 hover:bg-[#D6DCE6] md:hidden"
+              className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#B9C2CF] bg-[#E3E7ED] text-[#20385A] transition-colors duration-300 hover:bg-[#D6DCE6] md:hidden"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
