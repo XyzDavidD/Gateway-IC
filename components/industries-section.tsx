@@ -74,12 +74,12 @@ export function IndustriesSection() {
                 {industries.map(({ label, icon: IndustryIcon }) => (
                   <div
                     key={label}
-                    className="group flex h-full items-center gap-2.5 rounded-xl border border-[#E1E8F2] bg-[#FAFCFF] px-3 py-2.5 text-[0.9rem] text-[#223A59] transition-colors duration-300 hover:bg-[#F4F8FE] sm:text-[0.94rem]"
+                    className="group flex h-full items-center gap-2.5 rounded-xl border border-[#E1E8F2] bg-[#FAFCFF] px-3 py-2.5 text-[0.94rem] text-[#223A59] transition-colors duration-300 hover:bg-[#F4F8FE] sm:text-[0.98rem]"
                   >
                     <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#D7E2EF] bg-white text-[#214A82]">
                       <IndustryIcon className="h-4.5 w-4.5" />
                     </span>
-                    <span className="leading-snug">{label}</span>
+                    <span className="leading-snug font-medium">{label}</span>
                   </div>
                 ))}
               </div>
