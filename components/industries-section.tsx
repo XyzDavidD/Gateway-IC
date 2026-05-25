@@ -25,7 +25,7 @@ const industries = [
 
 const regions = [
   { label: "United Arab Emirates", image: "/unitedarabemirates.jpg" },
-  { label: "Middle East", image: "/middleeast.jpg" },
+  { label: "Middle East", image: "/middleeast.jpeg" },
   { label: "Europe", image: "/europe.jpg" },
   { label: "International Markets", image: "/international.jpg" },
 ];
