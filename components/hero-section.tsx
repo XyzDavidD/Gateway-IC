@@ -13,6 +13,7 @@ const slides = [
   {
     id: "slide-1",
     image: "/homepage1.jpg",
+    alt: "Airport runway and private jet at sunset",
     position: "50% 50%",
     title: "Connecting Global Aviation Expertise with Opportunities in the Middle East",
     subtitle:
@@ -21,6 +22,7 @@ const slides = [
   {
     id: "slide-2",
     image: "/homepage2.jpg",
+    alt: "Business jet at golden hour on the tarmac",
     position: "58% 42%",
     title: "Connecting expertise. Creating opportunities. Building aviation capability across borders.",
     subtitle:
@@ -215,10 +217,9 @@ export function HeroSection() {
             >
               <Image
                 src={slide.image}
-                alt="Gateway IC aircraft and destination view"
+                alt={slide.alt}
                 fill
                 priority={index === 0}
-                unoptimized
                 className="object-cover"
                 style={{ objectPosition: slide.position }}
                 sizes="100vw"
@@ -338,7 +339,10 @@ export function HeroSection() {
                 </p>
 
                 <div className="mt-7 flex flex-col items-center gap-3">
-                  <Button className="h-12 cursor-pointer rounded-full bg-white px-9 text-[0.96rem] font-medium tracking-[0.01em] text-[#0B2345] shadow-[0_12px_26px_rgba(0,0,0,0.2)] ring-1 ring-white/70 transition-[background-color,box-shadow,color] duration-300 ease-out hover:bg-[#E7ECF3] hover:text-[#071B37] hover:shadow-[0_16px_30px_rgba(0,0,0,0.24)]">
+                  <Button
+                    onClick={handleContactClick}
+                    className="h-12 cursor-pointer rounded-full bg-white px-9 text-[0.96rem] font-medium tracking-[0.01em] text-[#0B2345] shadow-[0_12px_26px_rgba(0,0,0,0.2)] ring-1 ring-white/70 transition-[background-color,box-shadow,color] duration-300 ease-out hover:bg-[#E7ECF3] hover:text-[#071B37] hover:shadow-[0_16px_30px_rgba(0,0,0,0.24)]"
+                  >
                     Let&apos;s discuss your project
                   </Button>
                 </div>

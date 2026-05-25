@@ -68,7 +68,9 @@ export function ContactSection() {
             viewport={{ once: true, amount: 0.28 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.06 }}
             className="rounded-[1.7rem] border border-[#D5DFEC] bg-white p-5 shadow-[0_12px_28px_rgba(0,26,61,0.07)] sm:p-7"
-            onSubmit={(event) => event.preventDefault()}
+            action="mailto:hello@gatewayic.com"
+            method="post"
+            encType="text/plain"
           >
             <div className="flex h-full flex-col">
               <div className="mb-6 flex items-center justify-between">
@@ -130,7 +132,10 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                <Button className="h-11 cursor-pointer rounded-full bg-[#001A3D] px-7 text-[0.95rem] font-medium text-white transition-colors duration-300 hover:bg-[#032550]">
+                <Button
+                  type="submit"
+                  className="h-11 cursor-pointer rounded-full bg-[#001A3D] px-7 text-[0.95rem] font-medium text-white transition-colors duration-300 hover:bg-[#032550]"
+                >
                   <Send className="mr-2 h-4 w-4" />
                   Send Request
                 </Button>
