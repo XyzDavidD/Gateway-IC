@@ -1,18 +1,16 @@
 import Image from "next/image";
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
 
 const footerLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
-  { label: "Support", href: "#" },
+  { label: "Email", href: "mailto:hello@gatewayic.com" },
 ];
 
 const socialLinks = [
-  { label: "Global", href: "#", icon: Globe },
-  { label: "Email", href: "#", icon: Mail },
-  { label: "Phone", href: "#", icon: Phone },
-  { label: "Location", href: "#", icon: MapPin },
+  { label: "Website", href: "https://gatewayic.com", icon: Globe },
+  { label: "Email", href: "mailto:hello@gatewayic.com", icon: Mail },
 ];
 
 export function FooterSection() {
@@ -50,6 +48,8 @@ export function FooterSection() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
+                rel="noopener noreferrer"
+                target={social.href.startsWith("http") ? "_blank" : undefined}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#D2DDEA] text-[#4F6583] transition-colors duration-300 hover:border-[#B4C6DD] hover:bg-[#F4F8FF] hover:text-[#001A3D]"
               >
                 <social.icon className="h-4 w-4" />

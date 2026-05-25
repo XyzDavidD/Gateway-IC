@@ -39,10 +39,7 @@ export function ContactSection() {
                   </div>
                 </a>
 
-                <a
-                  href="#"
-                  className="flex items-center gap-3 px-1 py-2 text-[#1F3655] transition-colors duration-300 hover:text-[#001A3D]"
-                >
+                <div className="flex items-center gap-3 px-1 py-2 text-[#1F3655]">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#21456E] shadow-[0_4px_12px_rgba(0,26,61,0.08)]">
                     <Globe className="h-4 w-4" />
                   </span>
@@ -50,12 +47,9 @@ export function ContactSection() {
                     <p className="text-[0.75rem] font-semibold tracking-[0.12em] text-[#5A6F8A] uppercase">Website</p>
                     <p className="text-[0.98rem] font-medium">Gateway International Consultancy FZ-LLC</p>
                   </div>
-                </a>
+                </div>
 
-                <a
-                  href="#"
-                  className="flex items-center gap-3 px-1 py-2 text-[#1F3655] transition-colors duration-300 hover:text-[#001A3D]"
-                >
+                <div className="flex items-center gap-3 px-1 py-2 text-[#1F3655]">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#21456E] shadow-[0_4px_12px_rgba(0,26,61,0.08)]">
                     <Link2 className="h-4 w-4" />
                   </span>
@@ -63,7 +57,7 @@ export function ContactSection() {
                     <p className="text-[0.75rem] font-semibold tracking-[0.12em] text-[#5A6F8A] uppercase">LinkedIn</p>
                     <p className="text-[0.98rem] font-medium">(add once ready)</p>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </motion.article>

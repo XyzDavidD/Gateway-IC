@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gatewayic.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gatewayic.com";
 const siteName = "Gateway International Consultancy";
+const legalName = "Gateway International Consultancy FZ-LLC";
 const siteDescription =
   "Gateway International Consultancy connects global aviation expertise with opportunities across the Middle East through engineering advisory, training solutions, regulatory support, and strategic partnerships.";
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -23,6 +25,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
+  referrer: "origin-when-cross-origin",
   title: {
     default: `${siteName} | Aviation Engineering, Training & Advisory`,
     template: `%s | ${siteName}`,
@@ -42,11 +45,15 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
   },
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
+    icon: [{ url: "/icon.png", type: "image/png" }],
     shortcut: [{ url: "/favicon.png", type: "image/png" }],
-    apple: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/icon.png", type: "image/png" }],
   },
   openGraph: {
     type: "website",
@@ -58,8 +65,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/homepage1.jpg",
-        width: 1827,
-        height: 1028,
+        width: 1920,
+        height: 1080,
         alt: "Gateway International Consultancy aviation services",
       },
     ],
@@ -84,11 +91,21 @@ export const metadata: Metadata = {
   category: "Aviation Consultancy",
   creator: siteName,
   publisher: siteName,
+  authors: [{ name: legalName, url: siteUrl }],
+  verification: {
+    google: googleVerification,
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#001A3D",
 };
 
 export default function RootLayout({

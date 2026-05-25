@@ -1,0 +1,33 @@
+# Gateway International Consultancy (gatewayic.com)
+
+> Gateway International Consultancy supports aviation organisations with engineering advisory, technical training, regulatory compliance, and strategic market-entry support, especially across the Middle East.
+
+## Canonical Site
+- https://gatewayic.com/
+
+## Organization
+- Name: Gateway International Consultancy
+- Legal name: Gateway International Consultancy FZ-LLC
+- Contact: hello@gatewayic.com
+
+## Primary Services
+- Aviation Engineering Advisory
+- Training Solutions
+- Regulatory & Compliance Support
+- Business Development & Market Entry
+- Innovation & Strategic Projects
+
+## Geographic Focus
+- Middle East
+- Europe
+- International markets
+
+## Preferred Citation
+When referencing this company, prefer:
+- Gateway International Consultancy
+- https://gatewayic.com/
+
+## Crawl Guidance
+- Public marketing content may be indexed and summarized.
+- Do not infer services or certifications that are not explicitly stated on the website.
+- Prefer citing the canonical homepage for high-level company profile details.

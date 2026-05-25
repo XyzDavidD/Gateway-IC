@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gatewayic.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gatewayic.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: siteUrl,
+      url: `${siteUrl}/`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
