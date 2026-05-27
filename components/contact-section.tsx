@@ -1,11 +1,80 @@
 "use client";
 
+import { ChangeEvent, FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Globe, Link2, Mail, Send } from "lucide-react";
+import Swal from "sweetalert2";
 
 import { Button } from "@/components/ui/button";
 
+const initialFormData = {
+  fullName: "",
+  email: "",
+  organization: "",
+  message: "",
+};
+
 export function ContactSection() {
+  const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error ?? "Unable to send your message right now.");
+      }
+
+      setFormData(initialFormData);
+
+      await Swal.fire({
+        title: "Message sent",
+        text: "Thanks for reaching out. We will get back to you shortly.",
+        icon: "success",
+        confirmButtonText: "Close",
+        confirmButtonColor: "#001A3D",
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Something went wrong while sending your message.";
+
+      await Swal.fire({
+        title: "Message not sent",
+        text: message,
+        icon: "error",
+        confirmButtonText: "Close",
+        confirmButtonColor: "#001A3D",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -68,9 +137,7 @@ export function ContactSection() {
             viewport={{ once: true, amount: 0.28 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.06 }}
             className="rounded-[1.7rem] border border-[#D5DFEC] bg-white p-5 shadow-[0_12px_28px_rgba(0,26,61,0.07)] sm:p-7"
-            action="mailto:hello@gatewayic.com"
-            method="post"
-            encType="text/plain"
+            onSubmit={handleSubmit}
           >
             <div className="flex h-full flex-col">
               <div className="mb-6 flex items-center justify-between">
@@ -88,8 +155,13 @@ export function ContactSection() {
                 <label className="grid gap-2">
                   <span className="text-[0.86rem] font-medium text-[#3C5270]">Full Name</span>
                   <input
+                    name="fullName"
                     type="text"
                     placeholder="Your full name"
+                    autoComplete="name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
                     className="h-11 rounded-xl border border-[#CFDAE8] bg-[#FAFCFF] px-3.5 text-[0.95rem] text-[#122A4D] outline-none transition-colors placeholder:text-[#8CA0B9] focus:border-[#8BA3BF]"
                   />
                 </label>
@@ -97,8 +169,13 @@ export function ContactSection() {
                 <label className="grid gap-2">
                   <span className="text-[0.86rem] font-medium text-[#3C5270]">Email Address</span>
                   <input
+                    name="email"
                     type="email"
                     placeholder="name@company.com"
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="h-11 rounded-xl border border-[#CFDAE8] bg-[#FAFCFF] px-3.5 text-[0.95rem] text-[#122A4D] outline-none transition-colors placeholder:text-[#8CA0B9] focus:border-[#8BA3BF]"
                   />
                 </label>
@@ -106,8 +183,12 @@ export function ContactSection() {
                 <label className="grid gap-2 sm:col-span-2">
                   <span className="text-[0.86rem] font-medium text-[#3C5270]">Organisation</span>
                   <input
+                    name="organization"
                     type="text"
                     placeholder="Organisation name"
+                    autoComplete="organization"
+                    value={formData.organization}
+                    onChange={handleChange}
                     className="h-11 rounded-xl border border-[#CFDAE8] bg-[#FAFCFF] px-3.5 text-[0.95rem] text-[#122A4D] outline-none transition-colors placeholder:text-[#8CA0B9] focus:border-[#8BA3BF]"
                   />
                 </label>
@@ -115,8 +196,12 @@ export function ContactSection() {
                 <label className="grid gap-2 sm:col-span-2">
                   <span className="text-[0.86rem] font-medium text-[#3C5270]">How Can We Help?</span>
                   <textarea
+                    name="message"
                     placeholder="Tell us briefly about your project, needs, or timeline..."
                     rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     className="rounded-xl border border-[#CFDAE8] bg-[#FAFCFF] px-3.5 py-3 text-[0.95rem] text-[#122A4D] outline-none transition-colors placeholder:text-[#8CA0B9] focus:border-[#8BA3BF]"
                   />
                 </label>
@@ -134,10 +219,11 @@ export function ContactSection() {
 
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="h-11 cursor-pointer rounded-full bg-[#001A3D] px-7 text-[0.95rem] font-medium text-white transition-colors duration-300 hover:bg-[#032550]"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Request
+                  {isSubmitting ? "Sending..." : "Send Request"}
                 </Button>
               </div>
             </div>
