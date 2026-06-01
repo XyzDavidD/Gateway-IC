@@ -10,9 +10,9 @@ import { ServicesSection } from "@/components/services-section";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gatewayic.com";
 
 export const metadata: Metadata = {
-  title: "Aviation Engineering, Training & Strategic Advisory",
+  title: "Gateway International Consultancy FZ-LLC | Aviation Engineering, Training & Strategic Advisory",
   description:
-    "Gateway International Consultancy supports aviation organisations through engineering advisory, technical training, regulatory compliance, and strategic market partnerships across the Middle East and international markets.",
+    "Gateway International Consultancy FZ-LLC supports aviation organisations through engineering advisory, technical training, regulatory compliance, and strategic market partnerships across the Middle East and international markets.",
   alternates: {
     canonical: "/",
   },
@@ -72,6 +72,19 @@ export default function Home() {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[var(--aviation-surface)]">
       <script
@@ -89,6 +102,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <HeroSection />
       <AboutSection />

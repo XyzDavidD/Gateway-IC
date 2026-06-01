@@ -2,9 +2,10 @@ import Image from "next/image";
 import { Globe, Mail } from "lucide-react";
 
 const footerLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Contact", href: "/contact" },
   { label: "Email", href: "mailto:hello@gatewayic.com" },
 ];
 
