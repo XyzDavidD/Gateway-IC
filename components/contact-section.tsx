@@ -2,10 +2,11 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import { Globe, Link2, Mail, Send } from "lucide-react";
+import { Globe, Mail, Send } from "lucide-react";
 import Swal from "sweetalert2";
 
 import { Button } from "@/components/ui/button";
+import { LinkedInIcon } from "@/components/ui/linkedin-icon";
 
 const initialFormData = {
   fullName: "",
@@ -126,7 +127,7 @@ export function ContactSection() {
                   className="flex items-center gap-3 px-1 py-2 text-[#1F3655] transition-colors duration-300 hover:text-[#001A3D]"
                 >
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#21456E] shadow-[0_4px_12px_rgba(0,26,61,0.08)]">
-                    <Link2 className="h-4 w-4" />
+                    <LinkedInIcon className="h-4 w-4" />
                   </span>
                   <div>
                     <p className="text-[0.75rem] font-semibold tracking-[0.12em] text-[#5A6F8A] uppercase">LinkedIn</p>
