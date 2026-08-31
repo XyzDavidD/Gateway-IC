@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Globe, Mail } from "lucide-react";
+import { Globe, Link2, Mail } from "lucide-react";
 
 const footerLinks = [
   { label: "Home", href: "#home" },
@@ -10,6 +10,7 @@ const footerLinks = [
 
 const socialLinks = [
   { label: "Website", href: "https://gatewayic.com", icon: Globe },
+  { label: "Gateway International Consultancy on LinkedIn", href: "https://www.linkedin.com/company/gatewayic/", icon: Link2 },
   { label: "Email", href: "mailto:hello@gatewayic.com", icon: Mail },
 ];
 

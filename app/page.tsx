@@ -27,6 +27,7 @@ export default function Home() {
     url: siteUrl,
     logo: `${siteUrl}/logo-dark.png`,
     email: "hello@gatewayic.com",
+    sameAs: ["https://www.linkedin.com/company/gatewayic/"],
     description:
       "Gateway International Consultancy connects global aviation expertise with opportunities in the Middle East through engineering advisory, training solutions, regulatory support, and strategic partnerships.",
   };
@@ -38,6 +39,7 @@ export default function Home() {
     url: siteUrl,
     image: `${siteUrl}/homepage1.jpg`,
     email: "hello@gatewayic.com",
+    sameAs: ["https://www.linkedin.com/company/gatewayic/"],
     areaServed: ["Middle East", "Europe", "International"],
     serviceType: [
       "Aviation Engineering Advisory",
